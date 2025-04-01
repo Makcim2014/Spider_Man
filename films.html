@@ -48,6 +48,7 @@
     </body>
     <script>
         try {
+            let isPlay = false
             document.querySelectorAll('.a-film:has(audio)').forEach(el=>{
                 el.addEventListener('mouseenter', ()=>{
                     if (!document.querySelector('.sound-button input:checked')) {return}
@@ -56,6 +57,16 @@
                 el.addEventListener('mouseleave', ()=>{
                     el.lastElementChild.pause()
                 })
+                el.addEventListener('touchstart', ()=>{
+                    if (!document.querySelector('.sound-button input:checked')) {return}
+                    if (!isPlay) {
+                        el.lastElementChild.play()
+                    } else {
+                        el.lastElementChild.pause()
+                    }
+                    isPlay = !isPlay
+                })
+
             })
         } catch {}
     </script>
