@@ -86,7 +86,10 @@ img {
 
 .sound-button img {
     position: static;
-    height: 100px;
+    height: 10vh;
+    width: 10vh;
+    max-height: 100px;
+    max-width: 100px;
 }
 
 .sound-button img:nth-child(2) {
