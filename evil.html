@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Злодеи</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <ul class="static">
+            <a href="index.html">
+                <li>
+                    <img style="position: static; border-radius: 100%; height: 5vh;" src="img/321321.png">
+                    На главную
+                </li>
+            </a>
+        </ul>       
+        <label class="sound-button" for="qwert">
+            <img src="img/sound-button.webp" width="100" height="100" alt="">
+            <img src="img/sound-play.jpg" width="100" height="100" alt="">
+            <input type="checkbox" id="qwert" style="display: none;">
+        </label>        
+        <h1>ЗЛОДЕИ</h1>
+        <ul>
+            <a href="osminog.html">
+                <li>
+                    <img class="img-li" src="img/droctopus3.jpg">
+                    Доктор Осьминог
+                </li>
+            </a>
+            <a href="mr_negativ.html">
+                <li>
+                    <img class="img-li" src="img/286337_3QjkPxDsAG_05.jpg">
+                    Мистер Негатив
+                </li>
+            </a>
+            <a href="Fisk.html">
+                <li>
+                    <img class="img-li" src="img/i.webp">
+                    Фиск
+                </li>
+            </a>
+        </ul>  
+    </body>
+    <script>
+        try {
+            document.querySelectorAll('li:has(audio)').forEach(el=>{
+                el.addEventListener('mouseenter', ()=>{
+                    if (!document.querySelector('.sound-button input:checked')) {return}
+                    el.lastElementChild.play()
+                })
+                // el.addEventListener('mouseleave', ()=>{
+                //     el.lastElementChild.pause()
+                // })
+            })
+        } catch {}
+    </script>
+</html>

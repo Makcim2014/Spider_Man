@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Герои</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <ul class="static">
+            <a href="index.html">
+                <li>
+                    <img style="position: static; border-radius: 100%; height: 5vh;" src="img/321321.png">
+                    На главную
+                </li>
+            </a>
+        </ul>        
+        <label class="sound-button" for="qwert">
+            <img src="img/sound-button.webp" width="100" height="100" alt="">
+            <img src="img/sound-play.jpg" width="100" height="100" alt="">
+            <input type="checkbox" id="qwert" style="display: none;">
+        </label>   
+        <h1>ГЕРОИ</h1>
+        <ul>
+            <a href="peter_parker.html">
+                <li>
+                    <img class="img-li" src="img/111.jpg">
+                    Питер Паркер
+                    <audio src="voice/spiderman-fraze.mp3"></audio>
+                </li>
+            </a>
+            <a href="aunt_mey.html">
+                <li>
+                    <img class="img-li" src="img/222.jpg">
+                    Тётя Мей
+                </li>
+            </a>
+            <a href="uncle_Ben.html">
+                <li>
+                    <img class="img-li" src="img/333.jpg">
+                    Дядя Бен
+                </li>
+            </a>
+        </ul>  
+    </body>
+    <script>
+        try {
+            document.querySelectorAll('li:has(audio)').forEach(el=>{
+                el.addEventListener('mouseenter', ()=>{
+                    if (!document.querySelector('.sound-button input:checked')) {return}
+                    el.lastElementChild.play()
+                })
+                el.addEventListener('mouseleave', ()=>{
+                    el.lastElementChild.pause()
+                })
+            })
+        } catch {}
+    </script>
+</html>

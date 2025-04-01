@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(black 10%, rgb(0, 115, 255) 90%);
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 1vh;
+    color: white;
+    font-size: 10vh
+}
+
+ul {
+    display: flex;
+    gap: 3vh;
+    padding: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 1vh 2vw;
+    gap: 1vh;
+    box-shadow: 0 0 1vh black;
+    border: 0.2vh solid #00325e;
+    background-color: #00325e;
+    font-size: 3vh;
+    transition: 0.25s ease-in-out;
+}
+
+li:hover {
+    background-color: #a60000;
+    box-shadow: 0 0 5vh black;
+    transform: scale(1.2);
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    gap: 5vh;
+    width: 100%;
+}
+
+img {
+    box-shadow: 0 0 1vh black;
+    transition: 0.25s ease-in-out;
+}
+
+.a-film {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5vh;
+    gap: 2.5vh;
+    width: calc((100% - 15vw)/5);
+    transition: 0.25s ease-in-out;
+}
+
+.a-film:hover {
+    transform: scale(1.2);
+}
+
+.a-film:hover img {
+    box-shadow: 0 0 5vh black;
+}
+.static{
+    position: static;
+}
+
+.sound-button {
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    cursor: pointer;
+}
+
+.sound-button img {
+    position: static;
+    height: 100px;
+}
+
+.sound-button img:nth-child(2) {
+    display: none;
+}
+
+.sound-button:has(input:checked) img:nth-child(1) {
+    display: none;
+}
+.sound-button:has(input:checked) img:nth-child(2) {
+    display: flex;
+}
