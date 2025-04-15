@@ -93,6 +93,28 @@ li:hover {
 .sound-button:has(input:checked) img:nth-child(1) {
     display: none;
 }
+
 .sound-button:has(input:checked) img:nth-child(2) {
     display: flex;
 }
+
+@media (max-width: 550px) {
+    h1 {
+        margin-top: 2vh;
+        font-size: 5vh;
+    }
+    
+    p {
+        margin-top: -2vh;
+        font-size: 2vh;
+    }    
+
+    img {
+        height: 24%;
+        top: 14%;
+    }
+    ul {
+        top: 40vh;
+    }
+
+} 

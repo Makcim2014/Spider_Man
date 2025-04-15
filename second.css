@@ -82,3 +82,40 @@ li:hover {
     box-shadow: 0 0 5vh black;
     transform: scale(1.2);
 }
+
+
+@media (max-width: 550px) {
+    h1 {
+        margin-top: 1vh;
+        font-size: 5vh;
+    }
+    
+    p {
+        margin-top: 30vh;
+        width: 90%;
+        padding: 2vh;
+        font-size: 2vh;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .img1 {
+        top: 28vh; 
+        right: 0; 
+        width: 25%;
+    }
+    
+    .img1.mobile {
+        width: 30%;
+    }
+
+    .img2 {
+        top: 28vh; 
+        left: 0; 
+        width: 25%;
+    }
+    
+    .img3 {
+        bottom: 2vh; 
+        width: 40%;
+    }
+}
