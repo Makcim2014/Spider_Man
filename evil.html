@@ -63,6 +63,20 @@
                     el.querySelector('audio').pause()
                 })
             })
+
+            document.querySelectorAll('.phone').forEach(el=>{
+                el.addEventListener('click', (e)=>{
+                    el.classList.toggle('active')
+                    e.preventDefault()
+
+                    if (el.classList.contains('active')) {
+                        el.parentElement.querySelector('audio').play()
+                    } else {
+                        el.parentElement.querySelector('audio').pause()                        
+                    }
+                })
+
+            })
         } catch {}
     </script>
 </html>

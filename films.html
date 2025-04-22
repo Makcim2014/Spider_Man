@@ -26,23 +26,38 @@
             <a class="a-film" href="https://www.kinopoisk.ru/film/690593/" target="_blank">
                 Человек-паук: Возвращение домой (2017)
                 <img src="img/1.png">
+                <button class="phone">
+                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                </button> 
             </a>
             <a class="a-film" href="https://www.kinopoisk.ru/film/843649/" target="_blank">
                 Мстители: Война бесконечности (2018)
                 <img src="img/2.png">
+                <button class="phone">
+                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                </button> 
             </a>
             <a class="a-film" href="https://www.kinopoisk.ru/film/843650/" target="_blank">
                 Мстители: Финал (2019)
                 <img src="img/3.png">
                 <audio src="voice/MSTITELI-FINAL.mp3"></audio>
+                <button class="phone">
+                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                </button> 
             </a>
             <a class="a-film" href="https://www.kinopoisk.ru/film/1008445/" target="_blank">
                 Человек-паук: Вдали от дома (2019)
                 <img src="img/4.png">
+                <button class="phone">
+                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                </button> 
             </a>
             <a class="a-film" href="https://www.kinopoisk.ru/film/1309570/" target="_blank">
                 Человек-паук: Нет пути домой (2021)
                 <img src="img/5.png">
+                <button class="phone">
+                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                </button> 
             </a>
         </div>
     </body>
@@ -66,6 +81,20 @@
                     }
                     isPlay = !isPlay
                 })
+            })
+
+            document.querySelectorAll('.phone').forEach(el=>{
+                el.addEventListener('click', (e)=>{
+                    el.classList.toggle('active')
+                    e.preventDefault()
+
+                    if (el.classList.contains('active')) {
+                        el.parentElement.querySelector('audio').play()
+                    } else {
+                        el.parentElement.querySelector('audio').pause()                        
+                    }
+                })
+
             })
         } catch {}
     </script>
