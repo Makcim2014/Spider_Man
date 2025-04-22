@@ -27,18 +27,27 @@
                 <li>
                     <img class="img-li" src="img/droctopus3.jpg">
                     Доктор Осьминог
+                    <button class="phone">
+                        <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                    </button> 
                 </li>
             </a>
             <a href="mr_negativ.html">
                 <li>
                     <img class="img-li" src="img/286337_3QjkPxDsAG_05.jpg">
                     Мистер Негатив
+                    <button class="phone">
+                        <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                    </button> 
                 </li>
             </a>
             <a href="Fisk.html">
                 <li>
                     <img class="img-li" src="img/i.webp">
                     Фиск
+                    <button class="phone">
+                        <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                    </button> 
                 </li>
             </a>
         </ul>  
@@ -48,11 +57,11 @@
             document.querySelectorAll('li:has(audio)').forEach(el=>{
                 el.addEventListener('mouseenter', ()=>{
                     if (!document.querySelector('.sound-button input:checked')) {return}
-                    el.lastElementChild.play()
+                    el.querySelector('audio').play()
                 })
-                // el.addEventListener('mouseleave', ()=>{
-                //     el.lastElementChild.pause()
-                // })
+                el.addEventListener('mouseleave', ()=>{
+                    el.querySelector('audio').pause()
+                })
             })
         } catch {}
     </script>

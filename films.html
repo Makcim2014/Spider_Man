@@ -52,17 +52,17 @@
             document.querySelectorAll('.a-film:has(audio)').forEach(el=>{
                 el.addEventListener('mouseenter', ()=>{
                     if (!document.querySelector('.sound-button input:checked')) {return}
-                    el.lastElementChild.play()
+                    el.querySelector('audio').play()
                 })
                 el.addEventListener('mouseleave', ()=>{
-                    el.lastElementChild.pause()
+                    el.querySelector('audio').pause()
                 })
                 el.addEventListener('touchstart', ()=>{
                     if (!document.querySelector('.sound-button input:checked')) {return}
                     if (!isPlay) {
-                        el.lastElementChild.play()
+                        el.querySelector('audio').play()
                     } else {
-                        el.lastElementChild.pause()
+                        el.querySelector('audio').pause()
                     }
                     isPlay = !isPlay
                 })

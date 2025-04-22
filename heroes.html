@@ -28,18 +28,29 @@
                     <img class="img-li" src="img/111.jpg">
                     Питер Паркер
                     <audio src="voice/spiderman-fraze.mp3"></audio>
+                    <button class="phone">
+                        <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                    </button> 
                 </li>
             </a>
             <a href="aunt_mey.html">
                 <li>
                     <img class="img-li" src="img/222.jpg">
                     Тётя Мей
+                    <audio src="voice/MAY.mp3"></audio>
+                    <button class="phone">
+                        <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                    </button> 
                 </li>
             </a>
             <a href="uncle_Ben.html">
                 <li>
                     <img class="img-li" src="img/333.jpg">
                     Дядя Бен
+                    <audio src="voice/BEN.mp3"></audio>
+                    <button class="phone">
+                        <img src="img/sound-play.jpg" width="40" height="40" alt="">
+                    </button> 
                 </li>
             </a>
         </ul>  
@@ -49,11 +60,25 @@
             document.querySelectorAll('li:has(audio)').forEach(el=>{
                 el.addEventListener('mouseenter', ()=>{
                     if (!document.querySelector('.sound-button input:checked')) {return}
-                    el.lastElementChild.play()
+                    el.querySelector('audio').play()
                 })
                 el.addEventListener('mouseleave', ()=>{
-                    el.lastElementChild.pause()
+                    el.querySelector('audio').pause()
                 })
+            })
+
+            document.querySelectorAll('.phone').forEach(el=>{
+                el.addEventListener('click', (e)=>{
+                    el.classList.toggle('active')
+                    e.preventDefault()
+
+                    if (el.classList.contains('active')) {
+                        el.parentElement.querySelector('audio').play()
+                    } else {
+                        el.parentElement.querySelector('audio').pause()                        
+                    }
+                })
+
             })
         } catch {}
     </script>
