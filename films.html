@@ -60,6 +60,12 @@
                 </button> 
             </a>
         </div>
+        <div class="modal">
+            <button class="close">Х</button>
+            <div class="video">
+                <iframe width="720" height="405" src="https://rutube.ru/play/embed/6411d33b66a9bde84eb5435ebb12e022/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </div>
+        </div>
     </body>
     <script>
         try {
@@ -96,6 +102,25 @@
                 })
 
             })
+        
+            let filmsList = []
+            let filmLinks = document.querySelectorAll('.a-film')  
+            let modal = document.querySelector('.modal') 
+            let closeButton =  document.querySelector('.close') 
+            
+            filmLinks.forEach(el=>{
+                el.onclick = (e)=>{
+                    e.preventDefault()
+                    modal.style.display = "flex"
+                }
+            })
+
+            closeButton.onclick = ()=>{
+                modal.style.display = "none"
+            }
+
         } catch {}
+
+
     </script>
 </html>
