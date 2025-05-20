@@ -23,46 +23,36 @@
         </label>           
         <h1>Фильмы</h1>
         <div>
-            <a class="a-film" href="https://www.kinopoisk.ru/film/690593/" target="_blank">
+            <a class="a-film">
                 Человек-паук: Возвращение домой (2017)
                 <img src="img/1.png">
-                <button class="phone">
-                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
-                </button> 
+
             </a>
-            <a class="a-film" href="https://www.kinopoisk.ru/film/843649/" target="_blank">
+            <a class="a-film" target="_blank">
                 Мстители: Война бесконечности (2018)
                 <img src="img/2.png">
-                <button class="phone">
-                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
-                </button> 
+
             </a>
-            <a class="a-film" href="https://www.kinopoisk.ru/film/843650/" target="_blank">
+            <a class="a-film" target="_blank">
                 Мстители: Финал (2019)
                 <img src="img/3.png">
                 <audio src="voice/MSTITELI-FINAL.mp3"></audio>
-                <button class="phone">
-                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
-                </button> 
+
             </a>
-            <a class="a-film" href="https://www.kinopoisk.ru/film/1008445/" target="_blank">
+            <a class="a-film" target="_blank">
                 Человек-паук: Вдали от дома (2019)
                 <img src="img/4.png">
-                <button class="phone">
-                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
-                </button> 
+
             </a>
-            <a class="a-film" href="https://www.kinopoisk.ru/film/1309570/" target="_blank">
+            <a class="a-film" target="_blank">
                 Человек-паук: Нет пути домой (2021)
                 <img src="img/5.png">
-                <button class="phone">
-                    <img src="img/sound-play.jpg" width="40" height="40" alt="">
-                </button> 
+
             </a>
         </div>
         <div class="modal">
             <button class="close">Х</button>
-            <div class="video">
+            <div class="video" id="video-frame">
                 <iframe width="720" height="405" src="https://rutube.ru/play/embed/6411d33b66a9bde84eb5435ebb12e022/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
             </div>
         </div>
@@ -103,20 +93,29 @@
 
             })
         
-            let filmsList = []
+            let filmsList = [
+                '<iframe width="720" height="405" src="https://rutube.ru/play/embed/2a6c476603d9e98106255f972e8e4a4a/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+                '<iframe width="720" height="405" src="https://rutube.ru/play/embed/13ab8d24ce9e9c8119b4d67af9daf482/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+                '<iframe width="720" height="405" src="https://rutube.ru/play/embed/6411d33b66a9bde84eb5435ebb12e022/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+                '<iframe width="720" height="405" src="https://rutube.ru/play/embed/301cefc5161846ebf191870ef69f69a9/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+                '<iframe width="720" height="405" src="https://rutube.ru/play/embed/6615b6d1b58acbbae98be49bc7a0d1c9/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
+            ]
             let filmLinks = document.querySelectorAll('.a-film')  
             let modal = document.querySelector('.modal') 
             let closeButton =  document.querySelector('.close') 
+            let videoitem = document.querySelector('#video-frame')
             
-            filmLinks.forEach(el=>{
+            filmLinks.forEach((el, index)=>{
                 el.onclick = (e)=>{
                     e.preventDefault()
                     modal.style.display = "flex"
+                    videoitem.innerHTML = filmsList[index]
                 }
             })
 
             closeButton.onclick = ()=>{
                 modal.style.display = "none"
+                    videoitem.innerHTML = ''
             }
 
         } catch {}

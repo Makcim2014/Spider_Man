@@ -161,6 +161,9 @@ button.close {
     .sound-button {
         display: none;
     }
+    button.close{
+        top: 0;
+    }
 }
 
 
