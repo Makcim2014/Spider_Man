@@ -15,12 +15,6 @@
                 </li>
             </a>
         </ul>
-        <label class="sound-button" for="qwert">
-            <img src="img/sound-button.webp" width="100" height="100" alt="">
-            
-            <img src="img/sound-play.jpg" width="100" height="100" alt="">
-            <input type="checkbox" id="qwert" style="display: none;">
-        </label>           
         <h1>Фильмы</h1>
         <div>
             <a class="a-film">
@@ -59,25 +53,6 @@
     </body>
     <script>
         try {
-            let isPlay = false
-            document.querySelectorAll('.a-film:has(audio)').forEach(el=>{
-                el.addEventListener('mouseenter', ()=>{
-                    if (!document.querySelector('.sound-button input:checked')) {return}
-                    el.querySelector('audio').play()
-                })
-                el.addEventListener('mouseleave', ()=>{
-                    el.querySelector('audio').pause()
-                })
-                el.addEventListener('touchstart', ()=>{
-                    if (!document.querySelector('.sound-button input:checked')) {return}
-                    if (!isPlay) {
-                        el.querySelector('audio').play()
-                    } else {
-                        el.querySelector('audio').pause()
-                    }
-                    isPlay = !isPlay
-                })
-            })
 
             document.querySelectorAll('.phone').forEach(el=>{
                 el.addEventListener('click', (e)=>{
