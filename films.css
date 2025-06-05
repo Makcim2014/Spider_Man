@@ -132,6 +132,22 @@ button.close {
     border: none;
     font-size: 30px;
 }
+.paytina{
+    position: absolute;
+    height: 30vh;
+    width: auto;
+    top: 53vh;
+    box-shadow: none;
+    left: 15vh;
+}
+.paytina2 {
+    position: absolute;
+    height: 30vh;
+    width: auto;
+    top: 53vh;
+    box-shadow: none;
+    right: 15vh;
+}
 
 
 
