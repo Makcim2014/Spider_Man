@@ -60,13 +60,50 @@ li {
     font-size: 3vh;
     transition: 0.25s ease-in-out;
 }
+.btn-gotovo{
+    padding: 1vh;
+    background-color: white;
+    font-size: 3vh; 
+    margin-top: 3vh;
+    transition: 0.25s ease-in-out;
+    box-shadow: 0 0 1vh black;
+}
 
+.btn-gotovo:hover{
+        box-shadow: 0 1vh 2vh black;
+    transform: translateY(-1vh);
+}
+.anim{
+    animation: slide 1s forwards;
+}
 
+@keyframes slide {
+    0%{
+        left: -100%;
+    }
+    100%{
+        left: 0%;
+    }
+}
+
+.anim2{
+    animation: clide 1s forwards;
+}
+@keyframes clide {
+    0%{
+        right: -100%;
+    }
+    100%{
+        right: 0%;
+    }
+}
 
 
 .static{
     position: static;
 }
+
+
 
 .sound-button {
     position: absolute;
