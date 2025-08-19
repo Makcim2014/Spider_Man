@@ -40,6 +40,15 @@ li {
 
 
 
+@keyframes show {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 div {
     display: flex;
     justify-content: center;
@@ -49,6 +58,7 @@ div {
 
 img {
     transition: 0.25s ease-in-out;
+    animation: show 3s forwards;
 }
 
 .a-film {

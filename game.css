@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgb(255, 0, 0) 10%, rgb(0, 115, 255) 90%);
+    overflow: hidden;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat {
+    padding: 10px 30px;
+    background: rgb(255, 255, 255);
+    border-radius: 8px; 
+}

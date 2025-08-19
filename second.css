@@ -33,6 +33,7 @@ p {
     right: 0; 
     width: 25%;
     box-shadow: 0 0 5vh black;
+    animation: clide 1s forwards;
 }
 
 .img2 {
@@ -41,6 +42,7 @@ p {
     left: 0; 
     width: 25%;
     box-shadow: 0 0 5vh black;
+    animation: slide 1s forwards;
 }
 
 .img3 {
@@ -48,6 +50,38 @@ p {
     bottom: 0; 
     width: 40%;
     box-shadow: 0 0 5vh black;
+    animation: clide2 1s forwards;
+}
+
+
+
+@keyframes slide {
+    0%{
+        left: -100%;
+    }
+    100%{
+        left: 0%;
+    }
+}
+
+
+@keyframes clide {
+    0%{
+        right: -100%;
+    }
+    100%{
+        right: 0%;
+    }
+}
+
+
+@keyframes clide2 {
+    0%{
+        bottom: -100%;
+    }
+    100%{
+        bottom: 0%;
+    }
 }
 
 .img-height {
