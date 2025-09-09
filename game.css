@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -7,16 +11,73 @@ body {
     height: 100vh;
     background: linear-gradient(rgb(255, 0, 0) 10%, rgb(0, 115, 255) 90%);
     overflow: hidden;
+    font-family: "Inter", sans-serif;
 }
 
 .row {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 106px;
+    height: 90px;
+    width: 572px;
+    margin: 10px 0;
 }
 
 .stat {
-    padding: 10px 30px;
+    padding: 10px 4px;
     background: rgb(255, 255, 255);
-    border-radius: 8px; 
+    border-radius: 15px;
+    display: flex; 
+    gap: 5px;
+    align-items: center;
+    width: 240px;
+    justify-content: center;
+}
+
+.stat h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.points {
+    font-size: 24px;
+}
+
+.clicker button {
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    padding: 0;
+    margin: 0 auto;
+}
+.clicker {
+    display: flex;
+    justify-content: center;
+}
+.upgrade-card{
+    width: 250px;
+    height: 70px;
+    border-radius: 15px;
+    background-color: #FFFAFA;
+    padding: 4px 10px;
+}
+.upgrade-card h4{
+    margin: 0;
+}
+.upgrade{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px 106px; 
+    background-color: black;
+    border-radius: 15px; 
+}
+h3{
+    text-align: center;
+    background-color: #FFFAFA;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    grid-column: span 2;
+    border-radius: 15px; 
 }
