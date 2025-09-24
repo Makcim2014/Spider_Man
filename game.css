@@ -51,20 +51,39 @@ body {
     border: 0;
     padding: 0;
     margin: 0 auto;
+    transition: 200ms;
+    cursor: pointer;
 }
+.clicker button:hover{
+transform: scale(1.08);
+}
+
 .clicker {
     display: flex;
     justify-content: center;
 }
+
 .upgrade-card{
     width: 250px;
     height: 70px;
     border-radius: 15px;
     background-color: #FFFAFA;
     padding: 4px 10px;
+    user-select: none;
+    transition: 200ms;
+    cursor: pointer;
+}
+.upgrade-card:hover{
+    box-shadow: 0 6px 20px red;
+}
+.upgrade-card:active{
+    box-shadow: 0 10px 20px rgb(30, 0, 255);
 }
 .upgrade-card h4{
     margin: 0;
+}
+.clicker button:active{
+transform: scale(0.96);
 }
 .upgrade{
     display: grid;
@@ -72,6 +91,8 @@ body {
     gap: 18px 106px; 
     background-color: black;
     border-radius: 15px; 
+    padding: 10px;
+    margin: 30px 0 0 0;
 }
 h3{
     text-align: center;
