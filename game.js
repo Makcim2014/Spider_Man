@@ -10,7 +10,7 @@ clicker.onclick = ()=> {
 }
 
 let autoclick = 0
-let autoInc = setTimeout(() => {
+let autoInc = setInterval(() => {
     count = count + autoclick
     score.innerHTML = count
     console.log(count,autoclick) 
