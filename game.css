@@ -15,10 +15,11 @@ body {
 }
 
 .row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
     align-items: center;
-    gap: 106px;
-    height: 90px;
+    gap: 10px 70px;
+    height: 200px;
     width: 572px;
     margin: 10px 0;
 }
@@ -30,8 +31,13 @@ body {
     display: flex; 
     gap: 5px;
     align-items: center;
-    width: 240px;
+    width: 100%;
     justify-content: center;
+}
+
+.stat:last-child{
+grid-column: span 2;
+
 }
 
 .stat h2 {
@@ -73,15 +79,23 @@ transform: scale(1.08);
     transition: 200ms;
     cursor: pointer;
 }
+.upgrade-card.upgrade-card-close{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .upgrade-card:hover{
     box-shadow: 0 6px 20px red;
 }
+
 .upgrade-card:active{
     box-shadow: 0 10px 20px rgb(30, 0, 255);
 }
+
 .upgrade-card h4{
     margin: 0;
 }
+
 .clicker button:active{
 transform: scale(0.96);
 }
