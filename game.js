@@ -1,12 +1,17 @@
 const clicker = document.querySelector("#clicker")
+const clickerimg = document.querySelector("#clicker img")
 const score = document.querySelector("#score")
 const avtoscore = document.querySelector("#avto_score")
 const autopower = document.querySelector("#power")
+const skidish = document.querySelector(".skidish")
+const skidishVideo = document.querySelector(".skidish video")
+
 let count = 0
 let power = 1
+let up = 0
 
-let price =[30,200,5000,10000,15000,30000,50000,500000]
-
+let price =[30,200,80,2500,1000,30000,9000,1000000]
+let lvl =['img/lvl2.png',  'img/lvl3.webp',  'img/lvl4.webp',  'img/lvl5.jpg']
 function checkPrice() {
     const upgrades=document.querySelectorAll(".upgrade-card")
     upgrades.forEach((el,index) =>{
@@ -16,6 +21,28 @@ function checkPrice() {
             el.classList.add("upgrade-card-close")
         }
     })
+}
+
+function upgrade_game() {
+     count = 0
+     power = 1
+    autoclick = 0
+     price =[30,200,80,2500,1000,30000,9000,1000000]
+    clickerimg.src = lvl[up]
+    up = up + 1  
+    br_rk.lastElementChild.innerHTML="цена "+price[0]
+    gz_rk.lastElementChild.innerHTML="цена "+price[2]
+    zl_rk.lastElementChild.innerHTML="цена "+price[4]
+    alm_rk.lastElementChild.innerHTML="цена "+price[6]
+    avto.lastElementChild.innerHTML="цена "+price[1]
+    ctpd.lastElementChild.innerHTML="цена "+price[3]
+    pom.lastElementChild.innerHTML="цена "+price[5]
+    pobeda.lastElementChild.innerHTML="цена "+price[7]
+    skidish.style.display="flex" 
+    skidishVideo.play()
+    setTimeout(()=>{
+        skidish.style.display = "none"
+    }, 6000)
 }
 
 clicker.onclick = ()=> {
@@ -44,6 +71,7 @@ br_rk.onclick = ()=> {
         price[0] =Math.round(price[0] *1.15) 
         br_rk.lastElementChild.innerHTML="цена "+price[0]
         checkPrice()
+        //upgrade_game()
     }
 }
 const gz_rk = document.querySelector("#gz_rk")
@@ -119,11 +147,11 @@ const pobeda = document.querySelector("#pobeda")
 pobeda.onclick = ()=> {
     if (count>= price[7]) {
         count = count - price[7]
-        autoclick = autoclick + 1000000
         score.innerHTML=count
         avtoscore.innerHTML=autoclick
         price[7] =Math.round(price[7] *1.15) 
         pobeda.lastElementChild.innerHTML="цена "+price[7]
         checkPrice()
+        upgrade_game()
     }
 }
