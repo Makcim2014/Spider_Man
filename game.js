@@ -1,157 +1,156 @@
-const clicker = document.querySelector("#clicker")
-const clickerimg = document.querySelector("#clicker img")
-const score = document.querySelector("#score")
-const avtoscore = document.querySelector("#avto_score")
-const autopower = document.querySelector("#power")
-const skidish = document.querySelector(".skidish")
-const skidishVideo = document.querySelector(".skidish video")
+const elements = {
+    clicker: document.querySelector("#clicker"),
+    clickerimg: document.querySelector("#clicker img"),
+    score: document.querySelector("#score"),
+    avtoscore: document.querySelector("#avto_score"),
+    autopower: document.querySelector("#power"),
+    skidish: document.querySelector(".skidish"),
+    skidishVideo: document.querySelector(".skidish video"),
+    pobedatext: document.querySelector("#pobeda h4")
+};
 
-let count = 0
-let power = 1
-let up = 0
+// Игровые данные
+const gameState = {
+    count: 0,
+    power: 1,
+    level: 0,
+    autoclick: 0,
+    prices: [30, 200, 80, 2500, 1000, 30000, 9000, 1000000],
+    levels: ['img/lvl2.png', 'img/lvl3.webp', 'img/lvl4.webp', 'img/lvl5.jpg'],
+    pobeda: ['победа над носорогом', 'победа над фиском', 'победа над ли', 'победа над доктором октавиусом']
+};
 
-let price =[30,200,80,2500,1000,30000,9000,1000000]
-let lvl =['img/lvl2.png',  'img/lvl3.webp',  'img/lvl4.webp',  'img/lvl5.jpg']
+// Конфигурация улучшений
+const upgrades = [
+    { id: 'br_rk', type: 'power', value: 3, priceIndex: 0 },
+    { id: 'gz_rk', type: 'power', value: 10, priceIndex: 2 },
+    { id: 'zl_rk', type: 'power', value: 100, priceIndex: 4 },
+    { id: 'alm_rk', type: 'power', value: 1000, priceIndex: 6 },
+    { id: 'avto', type: 'autoclick', value: 10, priceIndex: 1 },
+    { id: 'ctpd', type: 'autoclick', value: 100, priceIndex: 3 },
+    { id: 'pom', type: 'autoclick', value: 1000, priceIndex: 5 },
+    { id: 'pobeda', type: 'level', value: 0, priceIndex: 7 }
+];
+
+// Обновление отображения счета
+function updateScore() {
+    elements.score.textContent = gameState.count;
+    elements.autopower.textContent = gameState.power;
+    elements.avtoscore.textContent = gameState.autoclick;
+}
+
+// Проверка доступности улучшений
 function checkPrice() {
-    const upgrades=document.querySelectorAll(".upgrade-card")
-    upgrades.forEach((el,index) =>{
-    if (count>=price[index]) {
-            el.classList.remove("upgrade-card-close")
-        }else{
-            el.classList.add("upgrade-card-close")
+    upgrades.forEach((upgrade, index) => {
+        const element = document.querySelector(`#${upgrade.id}`);
+        if (gameState.count >= gameState.prices[upgrade.priceIndex]) {
+            element.classList.remove("upgrade-card-close");
+        } else {
+            element.classList.add("upgrade-card-close");
         }
-    })
+    });
 }
 
-function upgrade_game() {
-     count = 0
-     power = 1
-    autoclick = 0
-     price =[30,200,80,2500,1000,30000,9000,1000000]
-    clickerimg.src = lvl[up]
-    up = up + 1  
-    br_rk.lastElementChild.innerHTML="цена "+price[0]
-    gz_rk.lastElementChild.innerHTML="цена "+price[2]
-    zl_rk.lastElementChild.innerHTML="цена "+price[4]
-    alm_rk.lastElementChild.innerHTML="цена "+price[6]
-    avto.lastElementChild.innerHTML="цена "+price[1]
-    ctpd.lastElementChild.innerHTML="цена "+price[3]
-    pom.lastElementChild.innerHTML="цена "+price[5]
-    pobeda.lastElementChild.innerHTML="цена "+price[7]
-    skidish.style.display="flex" 
-    skidishVideo.play()
-    setTimeout(()=>{
-        skidish.style.display = "none"
-    }, 6000)
+// Покупка улучшения
+function buyUpgrade(upgrade) {
+    const priceIndex = upgrade.priceIndex;
+    const price = gameState.prices[priceIndex];
+    
+    if (gameState.count >= price) {
+        gameState.count -= price;
+        
+        // Применяем эффект улучшения
+        switch (upgrade.type) {
+            case 'power':
+                gameState.power += upgrade.value;
+                break;
+            case 'autoclick':
+                gameState.autoclick += upgrade.value;
+                break;
+            case 'level':
+                upgradeGame();
+                break;
+        }
+        
+        // Увеличиваем цену
+        gameState.prices[priceIndex] = Math.round(price * 1.15);
+        
+        // Обновляем интерфейс
+        const element = document.querySelector(`#${upgrade.id}`);
+        element.lastElementChild.textContent = `цена ${gameState.prices[priceIndex]}`;
+        
+        updateScore();
+        checkPrice();
+    }
 }
 
-clicker.onclick = ()=> {
-    count = count + power
-    score.innerHTML=count
-    checkPrice()
+// Переход на новый уровень
+function upgradeGame() {
+    gameState.count = 0;
+    gameState.power = 1;
+    gameState.autoclick = 0;
+    gameState.level++;
+    
+    // Сбрасываем цены
+    gameState.prices = [30, 200, 80, 2500, 1000, 30000, 9000, 1000000];
+    
+    // Обновляем изображение
+    if (gameState.level < gameState.levels.length) {
+        elements.clickerimg.src = gameState.levels[gameState.level-1];
+        elements.pobedatext.innerHTML = gameState.pobeda[gameState.level-1];
+
+    }
+    
+    // Обновляем цены в интерфейсе
+    upgrades.forEach(upgrade => {
+        const element = document.querySelector(`#${upgrade.id}`);
+        element.lastElementChild.innerHTML = `цена ${gameState.prices[upgrade.priceIndex]}`;
+    });
+    
+    // Показываем заставку
+    showSkidish();
+    
+    updateScore();
+    checkPrice();
 }
 
-let autoclick = 0
-let autoInc = setInterval(() => {
-    count = count + autoclick
-    score.innerHTML = count
-    checkPrice() 
-}, 1000)
+// Показ заставки
+function showSkidish() {
+    elements.skidish.style.display = "flex";
+    elements.skidishVideo.play();
+    
+    setTimeout(() => {
+        elements.skidish.style.display = "none";
+    }, 6000);
+}
 
-let autop = setInterval(() => {
-    autopower.innerHTML = power
-}, 100)
+// Инициализация игры
+function initGame() {
+    // Обработчик клика
+    elements.clicker.onclick = () => {
+        gameState.count += gameState.power;
+        updateScore();
+        checkPrice();
+    };
+    
+    // Автокликер
+    setInterval(() => {
+        gameState.count += gameState.autoclick;
+        updateScore();
+        checkPrice();
+    }, 1000);
+    
+    // Инициализация улучшений
+    upgrades.forEach(upgrade => {
+        const element = document.querySelector(`#${upgrade.id}`);
+        element.onclick = () => buyUpgrade(upgrade);
+        element.lastElementChild.textContent = `цена ${gameState.prices[upgrade.priceIndex]}`;
+    });
+    
+    // Начальное обновление интерфейса
+    updateScore();
+    checkPrice();
+}
 
-const br_rk = document.querySelector("#br_rk")
-br_rk.onclick = ()=> {
-    if (count>=price[0]) {
-        count = count - price[0]
-        power = power + 3
-        score.innerHTML=count
-        price[0] =Math.round(price[0] *1.15) 
-        br_rk.lastElementChild.innerHTML="цена "+price[0]
-        checkPrice()
-        //upgrade_game()
-    }
-}
-const gz_rk = document.querySelector("#gz_rk")
-gz_rk.onclick = ()=> {
-    if (count>= price[2]) {
-        count = count - price[2]
-        power = power + 10
-        score.innerHTML=count
-        price[2] =Math.round(price[2] *1.15) 
-        gz_rk.lastElementChild.innerHTML="цена "+price[2]
-        checkPrice()
-    }
-}
-const zl_rk = document.querySelector("#zl_rk")
-zl_rk.onclick = ()=> {
-    if (count>= price[4]) {
-        count = count - price[4]
-        power = power + 100
-        score.innerHTML=count
-        price[4] =Math.round(price[4] *1.15) 
-        zl_rk.lastElementChild.innerHTML="цена "+price[4]
-        checkPrice()
-    }
-}
-const alm_rk = document.querySelector("#alm_rk")
-alm_rk.onclick = ()=> {
-    if (count>= price[6]) {
-        count = count - price[6]
-        power = power + 1000
-        score.innerHTML=count
-        price[6] =Math.round(price[6] *1.15) 
-        alm_rk.lastElementChild.innerHTML="цена "+price[6]
-        checkPrice()
-    }
-}
-const avto = document.querySelector("#avto")
-avto.onclick = ()=> {
-    if (count>= price[1]) {
-        count = count - price[1]
-        autoclick = autoclick + 10
-        score.innerHTML=count
-        avtoscore.innerHTML=autoclick
-        price[1] =Math.round(price[1] *1.15) 
-        avto.lastElementChild.innerHTML="цена "+price[1]
-        checkPrice()
-    }
-}
-const ctpd = document.querySelector("#ctpd")
-ctpd.onclick = ()=> {
-    if (count>= price[3]) {
-        count = count - price[3]
-        autoclick = autoclick + 100
-        score.innerHTML=count
-        avtoscore.innerHTML=autoclick
-        price[3] =Math.round(price[3] *1.15) 
-        ctpd.lastElementChild.innerHTML="цена "+price[3]
-        checkPrice()
-    }
-}
-const pom = document.querySelector("#pom")
-pom.onclick = ()=> {
-    if (count>= price[5]) {
-        count = count - price[5]
-        autoclick = autoclick + 1000
-        score.innerHTML=count
-        avtoscore.innerHTML=autoclick
-        price[5] =Math.round(price[5] *1.15) 
-        pom.lastElementChild.innerHTML="цена "+price[5]
-        checkPrice()
-    }
-}
-const pobeda = document.querySelector("#pobeda")
-pobeda.onclick = ()=> {
-    if (count>= price[7]) {
-        count = count - price[7]
-        score.innerHTML=count
-        avtoscore.innerHTML=autoclick
-        price[7] =Math.round(price[7] *1.15) 
-        pobeda.lastElementChild.innerHTML="цена "+price[7]
-        checkPrice()
-        upgrade_game()
-    }
-}
+// Запуск игры
+initGame();
