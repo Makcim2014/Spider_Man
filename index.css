@@ -9,6 +9,30 @@ body {
     overflow: hidden;
 }
 
+.acc{
+    display: flex;
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+    align-items: center;
+    gap: 1vw;
+    border: 0.2vh solid #00325e;
+    background-color: #00325e;
+}
+
+.acc img{
+    position: static; 
+    border-radius: 100%; 
+    height: 5vh;
+    width: 5vh;
+    object-fit: cover;
+}
+
+.acc p{margin-top: 1vh;
+    color: white;
+    font-size: 3vh;
+}
+
 h1 {margin-top: 1vh;
     color: white;
     font-size: 10vh;
