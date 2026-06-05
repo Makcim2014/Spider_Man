@@ -272,3 +272,31 @@ li {
         transform: scale(1.2);
     }
 }
+
+.ava{
+display: flex;
+flex-wrap: wrap;
+gap: 1vw;
+}
+
+.item{
+    width: 10vw;
+    height: 10vw;
+    border: 5px solid rgba(255, 255, 255, 0);
+    cursor: pointer;
+}
+
+.item img{
+    position: static;
+    width: 10vw;
+    height: 10vw;
+}
+
+.save{
+    background-color: #ffffff;
+    font-size: 3vh;  
+}
+
+.item.active{
+    border: 5px solid green;
+}
