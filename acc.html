@@ -14,15 +14,15 @@
             <input type="text" id="name">
         </label>
         <div class="ava">
-            <div class="item"><img src="img/i (8).webp" alt=""></div>
-            <div class="item"><img src="img/e5caf5a0e2f7fb1c932fe532e2d0c8be.jpg" alt=""></div>
-            <div class="item"><img src="img/dd721ae9883fc90cd8926311861efd01.png" alt=""></div>
-            <div class="item"><img src="img/daf642c93dbd6566c50b8ac9a778875d.jpg" alt=""></div>
-            <div class="item"><img src="img/d0daa10ef9e8a988c1e154d25ca28bc3.jpg" alt=""></div>
-            <div class="item"><img src="img/blue-emoji.gif" alt=""></div>
-            <div class="item"><img src="img/207adb0378f03e20375c1cc27a506243.jpg" alt=""></div>
-            <div class="item"><img src="img/2ee4468e64571cc2af540ddbb3094946.jpg" alt=""></div>
-             <div class="item active"><img src="img/95beae9b6943d24a17f1159b35cc9dd3.png" alt=""></div>
+            <div class="item" data-atribut="1"><img src="img/i (8).webp" alt=""></div>
+            <div class="item" data-atribut="2"><img src="img/e5caf5a0e2f7fb1c932fe532e2d0c8be.jpg" alt=""></div>
+            <div class="item" data-atribut="3"><img src="img/dd721ae9883fc90cd8926311861efd01.png" alt=""></div>
+            <div class="item" data-atribut="4"><img src="im/daf642c93dbd6566c50b8ac9a778875d.jpg" alt=""></div>
+            <div class="item" data-atribut="5"><img src="img/d0daa10ef9e8a988c1e154d25ca28bc3.jpg" alt=""></div>
+            <div class="item" data-atribut="6"><img src="img/blue-emoji.gif" alt=""></div>
+            <div class="item" data-atribut="7"><img src="img/207adb0378f03e20375c1cc27a506243.jpg" alt=""></div>
+            <div class="item" data-atribut="8"><img src="img/2ee4468e64571cc2af540ddbb3094946.jpg" alt=""></div>
+            <div class="item active" data-atribut="9"><img src="img/95beae9b6943d24a17f1159b35cc9dd3.png" alt=""></div>
         </div>
         <button class="save">сохранение</button>
         </form>
@@ -32,9 +32,24 @@
                     if(!item.classList.contains("active")){
                     document.querySelector(".item.active").classList.remove("active")   
                         item.classList.add("active")
+                        localStorage.setItem("avatar",item.dataset.atribut)
+                        localStorage.setItem("avatar-src",item.firstElementChild.src)
                     }
                 }
             })
+            document.addEventListener('DOMContentLoaded', function() {
+                if  (localStorage.getItem("avatar"))  {
+                    document.querySelector(".item.active").classList.remove("active")   
+                    document.querySelector(`[data-atribut="${localStorage.getItem('avatar')}"]`).classList.add("active")    
+                }
+                if (localStorage.getItem("name")) {
+                    document.querySelector("#name").value=localStorage.getItem("name")
+
+                }
+            });
+            document.querySelector(".save").onclick=function(){
+            localStorage.setItem("name",document.querySelector("#name").value)
+            }
         </script>
 </body>
 </html>

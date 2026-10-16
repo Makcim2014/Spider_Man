@@ -52,5 +52,13 @@
                 </li>
             </a>
         </ul>  
+        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                if  (localStorage.getItem("avatar"))  {
+                    document.querySelector(".acc img").src=localStorage.getItem("avatar-src")
+                    document.querySelector(".acc p").innerHTML=localStorage.getItem("name")      
+                }
+            });
+        </script>
     </body>
 </html>
